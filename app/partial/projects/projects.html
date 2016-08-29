@@ -1,0 +1,9 @@
+<toolbar btn-action="onAddProject()" title="Projects" btn-text="Add project" btn-icon="add"></toolbar>
+<div class="projects-container my-container">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="ui two stackable cards">
+            <project-card  ng-repeat="project in projects" action="onAction(project, action)" preview="false" project-info="project"></project-card>
+        </div>
+    </div>
+</div>
+<div ui-view="test"></div>

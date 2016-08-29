@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="MainCtrl">
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link href="app.less" type="text/css" rel="stylesheet/less">
+
+</head>
+<body>
+
+  <!-- Livereload script for development only (stripped during dist build) -->
+  <script src="http://localhost:35730/livereload.js" data-concat="false"></script>
+
+  <!-- JS from Bower Components -->
+  <script src="bower_components/less.js/dist/less.js" data-concat="false"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/lodash/dist/lodash.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/semantic/dist/semantic.min.js"></script>
+  <script src="bower_components/angular-semantic-ui/dist/angular-semantic-ui.js"></script>
+  <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+  <script src="bower_components/localforage/dist/localforage.min.js"></script>
+  <script src="bower_components/angular-localforage/dist/angular-localForage.min.js"></script>
+  <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
+  <!-- Add New Bower Component JS Above -->
+
+
+  <!-- Main App JS -->
+  <script src="app.js"></script>
+  <script src="main.controller.js"></script>
+  <script src="partial/common/sidebar/sidebar.js"></script>
+  <script src="partial/authentication/login/login.js"></script>
+  <script src="partial/authentication/logout/logout.js"></script>
+  <script src="partial/authentication/session.service.js"></script>
+  <script src="partial/authentication/authentication.service.js"></script>
+  <script src="partial/common/http-interceptor/http-interceptor.service.js"></script>
+  <script src="partial/common/cms-toolbar/toolbar.component.js"></script>
+  <script src="partial/projects/projects.js"></script>
+  <script src="partial/projects/cms-project-card/project-card.component.js"></script>
+  <script src="partial/projects/projects.service.js"></script>
+  <script src="filter/filters.js"></script>
+  <script src="partial/projects/add-project/add-project.js"></script>
+  <script src="partial/projects/cms-project/cms-project.component.js"></script>
+  <script src="partial/projects/edit-project/edit-project.js"></script>
+  <script src="partial/projects/single-project/single-project.js"></script>
+  <script src="partial/articles/articles.js"></script>
+  <script src="partial/articles/article/article.js"></script>
+  <script src="partial/articles/articlesService.js"></script>
+  <!-- Add New Component JS Above -->
+  <div id="loading-bar-container"></div>
+
+  <div class="cover-wrapper" ui-view="cover" ng-if="isCoverView"></div>
+
+  <div class="wrapper" ng-if="!isCoverView && isLoggedIn">
+      <aside class="main-sidebar" ui-view="sidebar"></aside>
+      <div ui-view="main" class="content-wrapper" ng-class="{'main-view':isLoggedIn}"></div>
+  </div>
+
+
+</body>
+</html>

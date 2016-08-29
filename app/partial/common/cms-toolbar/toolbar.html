@@ -1,0 +1,8 @@
+<div class="toolbar-bg clearfix">
+    <ul class="toolbar-nav">
+        <li><h2 ng-if="title"  class="" ng-bind="title"></h2></li>
+    </ul>
+    <ul ng-click="btnAction()" class="toolbar-nav right">
+        <li><div ng-if="btnText"  class="cms-btn btn-blue"><i ng-class="btnIcon" class="icon"></i><span ng-bind="btnText"></span></div></li>
+    </ul>
+</div>

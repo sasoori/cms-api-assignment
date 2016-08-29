@@ -1,0 +1,68 @@
+<div class="container col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
+    <form name="addProjectForm" novalidate ng-submit="addProjectForm.$valid && addProject()" class="ui form">
+        <div class="filed-container">
+            <div class="field">
+                <span class="field-title">Project name <span class="cms-red">*</span></span>
+                <div class="field-value">
+                    <input type="text" name="projectName"  ng-model="project.name" required>
+                </div>
+            </div>
+            <div class="field programing-language">
+                <span class="field-title">Framework <span class="cms-red">*</span></span>
+                <div class="field-value">
+                    <select class="ui dropdown" ng-options="framework for framework in frameworks" ng-model="project.framework" required></select>
+                </div>
+            </div>
+            <div class="field programing-language">
+                <span class="field-title">Programming Languages <span class="cms-red">*</span></span>
+                <tags-input ng-model="project.languages" placeholder="Type to add..."  add-from-autocomplete-only="true" min-tags="1" addOnBlur="false">
+                    <auto-complete min-length="2" source="searchLanguages($query)"></auto-complete>
+                </tags-input>
+            </div>
+            <div class="field">
+                <span class="field-title">Project status <span class="cms-red">*</span></span>
+                <div class="inline fields">
+                    <div class="field" ng-repeat="status in statusTypes">
+                        <div class="ui radio checkbox">
+                            <div class="field-value">
+                                <input  type="radio" ng-attr-id="{{status.type}}" name="radioType"  ng-model="project.status"  ng-value="status.type" ng-attr-id="" required>
+                                <label ng-attr-for="{{status.type}}" ng-bind="status.name"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="description required error no-margin" ng-if="addProjectForm.$submitted && addProjectForm.radioType.$error.required">
+                            Required.
+                    </span>
+                </div>
+            </div>
+            <div class="field">
+                <div class="field-value">
+                    <span class="field-title">Short Description</span>
+                    <div class="ui input">
+                        <textarea ng-model="project.description" type="text" rows="5" />
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <span class="field-title">Background color</span>
+                <div class="field-value">
+                    <select id="backgroundColorRadio" class="ui dropdown" ng-options="color as color.name for color in backgroundColors" name="background" ng-model="project.background"></select>
+                </div>
+            </div>
+        </div>
+        <div class="submit-button">
+            <a ui-sref="root.projects">
+                <button class="ui basic button">Cancel</button>
+            </a>
+            <button type="submit" class="ui icon button">
+                <i class="send right icon"></i>
+                Save Project
+            </button>
+        </div>
+    </form>
+</div>
+<div class="col-md-6 col-lg-5 col-sm-10 col-md-offset-0 col-sm-offset-1 col-xs-12">
+    <div class="ui one stackable cards">
+        <project-card project-info="project" preview="true"></project-card>
+    </div>
+</div>

@@ -1,0 +1,120 @@
+
+@import "bower_components/bootstrap/less/bootstrap.less";
+@import "bower_components/ng-tags-input/ng-tags-input.min.css";
+//@import "bower_components/bootstrap/less/theme.less";
+@import "bower_components/font-awesome/less/font-awesome.less";
+@import 'https://fonts.googleapis.com/css?family=Lato:300,400,700';
+@import "bower_components/angular-loading-bar/build/loading-bar.min.css";
+@fa-font-path: "bower_components/font-awesome/fonts";
+@import "bower_components/semantic/dist/semantic.min.css";
+/* Component LESS */
+@import "partial/common/sidebar/sidebar.less";
+@import "partial/authentication/login/login.less";
+@import "partial/authentication/logout/logout.less";
+@import "partial/projects/projects.less";
+@import "partial/common/cms-toolbar/toolbar.less";
+@import "partial/projects/cms-project-card/project-card.less";
+@import "styles/helpers.less";
+@import "styles/responsive.less";
+@import "partial/projects/add-project/add-project.less";
+@import "partial/projects/edit-project/edit-project.less";
+@import "partial/projects/cms-project/cms-project.less";
+@import "partial/projects/single-project/single-project.less";
+@import "partial/articles/articles.less";
+@import "partial/articles/article/article.less";
+/* Add Component LESS Above */
+
+/* Required for Angular UI Bootstrap */
+.nav, .pagination, .carousel, .panel-title a {
+  cursor: pointer;
+}
+
+/* Personal preference for BS modal.  The LESS below makes the backdrop white and
+   causes the modal to fade in rather than slide in. */
+//@modal-backdrop-bg: white;
+//.modal {
+//	&.fade {
+//		.transition(opacity .3s);
+//	}
+//	&.fade .modal-dialog {
+//		.translate(0,0);
+//	}
+//}
+
+@cms-black: #3f3f3f;
+@cms-dimgray: #c2c2c2;
+@cms-lightgray: #f7f7f7;
+@cms-light: #eee;
+@cms-gray: #F1F2F1;
+@cms-red: #b91d47;
+@cms-blue: #68B3C8;
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 200;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 25px;
+}
+h2 {
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.main-view {
+  margin-left: 200px;
+  background-color: #f4f3ef;
+  color: #4A4949;
+  overflow: auto;
+  height: 100vh;
+  font-weight: 200;
+}
+
+.cms-btn {
+  padding: 7px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.btn-blue {
+  color: #4A4949;
+  font-weight: 200;
+
+}
+.cms-white {
+  color: @cms-lightgray;
+}
+.cms-red {
+  color: red;
+}
+
+.my-container{
+    width: 100%;
+    height: calc(~"100% - 120px") !important;
+    margin-top: 120px;
+}
+.container-padding {
+  padding-top: 50px;
+  padding-botom: 20px;
+  box-sizing: border-box;
+}
+// Softer shadow
+.ui.cards > .card  {
+    box-shadow: 0 1px 3px 0 #D4D4D5,0 0 0 0 #D4D4D5
+}
+
+.ui.form input:not([type]), .ui.form input[type=text], .ui.form input[type=email], .ui.form input[type=search], .ui.form input[type=password], .ui.form input[type=date], .ui.form input[type=datetime-local], .ui.form input[type=tel], .ui.form input[type=time], .ui.form input[type=url], .ui.form input[type=number] {
+    padding: 0.5em 1em;
+}
+
+#loading-bar .bar {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+}
+textarea {
+  resize: none !important;
+}

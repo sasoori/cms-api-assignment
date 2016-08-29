@@ -1,0 +1,23 @@
+<div class="card">
+    <div ng-click="onAction('open')" class="image text-center" ng-class="(preview === true) ? projectInfo.background.cssClass : projectInfo.background">
+        <h1 class="card-title cms-white">
+            <span>{{frameworkDisplay(projectInfo.framework, true)}}</span><span class="bold">{{frameworkDisplay(projectInfo.framework)}}</span>
+        </h1>
+    </div>
+    <div class="content">
+        <!--<div class="status" ng-class="projectInfo.status" title="{{projectInfo.status}}"></div>-->
+        <a ng-click="onAction('open')" class="header" ng-bind="projectInfo.name" ></a>
+        <p class="description" ng-if="projectInfo.description" ng-bind="projectInfo.description"></p>
+        <div class="meta">
+            Started on
+            <span class="date" ng-bind="projectInfo.dateCreated | dateMomentUtc"></span>
+        </div>
+    </div>
+    <div class="extra content">
+        {{projectInfo.id}}
+        <a ng-click="onAction('edit')">
+            <i class="code icon"></i>
+            Edit
+        </a>
+    </div>
+</div>
