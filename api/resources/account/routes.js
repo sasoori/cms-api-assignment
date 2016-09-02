@@ -5,7 +5,7 @@ var authMiddleware = require('../../middlewares/auth');
 
 module.exports = function(server) {
     // LOGIN
-    server.post('/api/account/login', function(req, res) {
+    server.post('/account/login', function(req, res) {
         req.checkBody('password').notEmpty();
         var errors = req.validationErrors();
         if (errors) {
@@ -38,7 +38,7 @@ module.exports = function(server) {
         });
     });
     // REGISTER
-    server.post('/api/account', function(req, res) {
+    server.post('/account', function(req, res) {
         req.checkBody('email', 'Email is not valid').isEmail();
         req.checkBody('password', 'Password is too short').notEmpty().isLength({min:5});
         var errors = req.validationErrors();
@@ -69,7 +69,7 @@ module.exports = function(server) {
     });
 
 
-    server.post('/api/account/checkLogin', authMiddleware, function(req, res) {
+    server.post('/account/checkLogin', authMiddleware, function(req, res) {
         res.status(200).send(res.data);
     });
 };
