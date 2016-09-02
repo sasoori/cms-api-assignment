@@ -1,6 +1,6 @@
-angular.module('app').factory('projectsService',function($http, $q, IP) {
+angular.module('app').factory('projectService',function($http, $q, IP) {
 
-    var projectsService = {
+    var projectService = {
 
         model: {
             projectsList : {}
@@ -13,7 +13,7 @@ angular.module('app').factory('projectsService',function($http, $q, IP) {
                 url: IP + '/projects',
                 ignoreLoadingBar: false
             }).then(function(res) {
-                projectsService.model.projectsList = res.data;
+                projectService.model.projectsList = res.data;
                 deferred.resolve(res && res.data ? res.data : []);
             }, function(error) {
                 deferred.reject(error);
@@ -60,5 +60,5 @@ angular.module('app').factory('projectsService',function($http, $q, IP) {
         }
     };
 
-    return projectsService;
+    return projectService;
 });

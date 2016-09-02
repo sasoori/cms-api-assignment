@@ -4,8 +4,7 @@ angular.module('app').factory('Session',function() {
         model: {
             user: {
                 token: null
-            },
-            users:[]
+            }
         }
     };
 

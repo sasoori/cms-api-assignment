@@ -1,0 +1,52 @@
+<div class="article-form">
+    <div class="container col-lg-10 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
+        <form name="addArticleForm" novalidate ng-submit="addArticleForm.$valid && addArticle()" class="ui form">
+            <div class="col-lg-5 no-gutter">
+                <div class="filed-container">
+                    <div class="field">
+                        <span class="field-title">Title <span class="cms-red">*</span></span>
+                        <div class="field-value">
+                            <input type="text" name="title"  ng-model="article.title" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <span class="field-title">Category <span class="cms-red">*</span></span>
+                        <div class="field-value">
+                            <select class="ui dropdown" ng-options="category for category in categories" ng-model="article.category" required></select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <span class="field-title">Author <span class="cms-red">*</span></span>
+                        <div class="field-value">
+                            <input type="text" name="author"  ng-model="article.author" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field tinymce">
+                <span class="field-title">Content <span class="cms-red">*</span></span>
+                <div class="field-value">
+                    <textarea ui-tinymce ng-model="article.content" required></textarea>
+                </div>
+            </div>
+            <div class="submit-button">
+                <a ui-sref="root.articles">
+                    <button class="ui basic button">Cancel</button>
+                </a>
+                <button type="submit" class="ui icon button">
+                    <i class="book right icon"></i>
+                    Save article
+                </button>
+                <button type="submit" class="ui icon basic button">
+                    <i class="send right icon"></i>
+                    Save & Publish
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6 col-lg-5 col-sm-10 col-md-offset-0 col-sm-offset-1 col-xs-12">
+        <div class="ui one stackable cards">
+            <article-card article-info="article" preview="true"></article-card>
+        </div>
+    </div>
+</div>

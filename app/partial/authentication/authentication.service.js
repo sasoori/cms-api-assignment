@@ -6,7 +6,7 @@ angular.module('app').factory('authService',function($http, $rootScope, $q, Sess
             var deferred = $q.defer();
             $http({
                 method: 'POST',
-                url: IP + '/api/account/login',
+                url: IP + '/account/login',
                 data: credentials,
                 ignoreLoadingBar: false
             }).then(function(response) {
@@ -23,7 +23,7 @@ angular.module('app').factory('authService',function($http, $rootScope, $q, Sess
                 var deferred = $q.defer();
                 $http({
                     method: 'POST',
-                    url: IP + '/api/account/checkLogin',
+                    url: IP + '/account/checkLogin',
                     data: Session.model.user,
                     ignoreLoadingBar: false
                 }).then(function (response) {

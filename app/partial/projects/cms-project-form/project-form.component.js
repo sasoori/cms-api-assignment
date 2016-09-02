@@ -1,12 +1,12 @@
-angular.module('app').directive('cmsProject', function() {
+angular.module('app').directive('projectForm', function() {
     return {
         restrict: 'EA',
-        replace: false,
+        replace: true,
         scope: {
             saveProject: '&',
             editedProject: '='
         },
-        templateUrl: 'partial/projects/cms-project/cms-project.html',
+        templateUrl: 'partial/projects/cms-project-form/project-form.html',
         link: function(scope, $state, element, attrs, fn) {
             scope.project = {};
             scope.backgroundColors = [
@@ -25,7 +25,8 @@ angular.module('app').directive('cmsProject', function() {
                 {
                     name: 'Orange',
                     cssClass: 'bg-orange'
-                }];
+                }
+            ];
             // Project fields
             var editableFields = [
                 { field: 'name', defaultValue : null },

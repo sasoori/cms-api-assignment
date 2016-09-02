@@ -1,8 +1,15 @@
-<div class="toolbar-bg clearfix">
+<div class="toolbar toolbar-bg clearfix">
     <ul class="toolbar-nav">
         <li><h2 ng-if="title"  class="" ng-bind="title"></h2></li>
     </ul>
-    <ul ng-click="btnAction()" class="toolbar-nav right">
-        <li><div ng-if="btnText"  class="cms-btn btn-blue"><i ng-class="btnIcon" class="icon"></i><span ng-bind="btnText"></span></div></li>
+    <ul class="toolbar-nav tools right">
+        <li ng-if="allowRemove" class="editor-tools">
+            <div class="ui icon buttons">
+                <button ng-click="onAction('remove')" class="ui button"><i class="trash icon"></i>Move to trash</button>
+            </div>
+        </li>
+        <li ng-click="onAction('add')"><div ng-if="btnText" class="cms-btn"><i ng-class="btnIcon" class="icon"></i><span ng-bind="btnText"></span></div></li>
+        <div class="clear-fix"></div>
     </ul>
+    <div class="clear-fix"></div>
 </div>

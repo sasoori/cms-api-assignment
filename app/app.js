@@ -1,12 +1,22 @@
+angular.module('app', [
+    'ui.bootstrap',
+    'ui.router',
+    'ngAnimate',
+    'angularify.semantic.sidebar',
+    'angular-loading-bar',
+    'ngTagsInput',
+    'LocalForageModule',
+    'oitozero.ngSweetAlert',
+    'ui.tinymce'
+]);
 
-angular.module('app', ['ui.bootstrap','ui.router','ngAnimate', 'angularify.semantic.sidebar', 'angular-loading-bar', 'ngTagsInput', 'LocalForageModule']);
 angular.module('app').config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
 }]);
 angular.module('app').config(function ($httpProvider) {
     $httpProvider.interceptors.push('HttpInterceptor');
 });
-angular.module('app').constant('IP', 'http://192.168.1.27:3010');
+angular.module('app').constant('IP', 'http://localhost:3010');
 angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 
     $stateProvider.state('login', {
@@ -44,8 +54,8 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
                 templateUrl: 'partial/projects/projects.html',
                 controller: 'ProjectsCtrl',
                 resolve: {
-                    projects: function (projectsService) {
-                        return projectsService.getProjects();
+                    projects: function(projectService) {
+                        return projectService.getProjects();
                     }
                 }
             }
@@ -67,22 +77,22 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
                 controller: 'EditProjectCtrl',
                 templateUrl: 'partial/projects/edit-project/edit-project.html',
                 resolve: {
-                    project: function (projectsService, $stateParams) {
-                        return projectsService.getProject($stateParams.id);
+                    project: function(projectService, $stateParams) {
+                        return projectService.getProject($stateParams.id);
                     }
                 }
             }
         }
     });
-    $stateProvider.state('root.projects.single-project', {
+    $stateProvider.state('root.projects.project', {
         url: '/project/:id/:slug',
         views: {
             "main@" : {
                 controller: 'SingleProjectCtrl',
-                templateUrl: 'partial/projects/single-project/single-project.html',
+                templateUrl: 'partial/projects/project/project.html',
                 resolve: {
-                    project: function (projectsService, $stateParams) {
-                        return projectsService.getProject($stateParams.id);
+                    project: function(projectService, $stateParams) {
+                        return projectService.getProject($stateParams.id);
                     }
                 }
             }
@@ -96,21 +106,31 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
                 templateUrl: 'partial/articles/articles.html',
                 resolve: {
                     articles: function(articleService) {
-
+                        return articleService.getArticles();
                     }
                 }
             }
         }
     });
-    $stateProvider.state('root.articles.article', {
-        url: '/article',
+    $stateProvider.state('root.articles.add-article', {
+        url: '/add',
         views: {
-            "main@": {
+            "main@" : {
+                controller: 'AddArticleCtrl',
+                templateUrl: 'partial/articles/add-article/add-article.html'
+            }
+        }
+
+    });
+    $stateProvider.state('root.articles.article', {
+        url: '/article/:id/:title',
+        views: {
+            "main@" : {
                 controller: 'ArticleCtrl',
                 templateUrl: 'partial/articles/article/article.html',
                 resolve: {
-                    article: function (articleService) {
-
+                    article: function(articleService, $stateParams) {
+                        return articleService.getArticle($stateParams.id);
                     }
                 }
             }
@@ -123,8 +143,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 angular.module('app').run(function($rootScope) {
 
     $rootScope.$on('$stateChangeStart', function(event, toState){
-
-        switch(toState.name){
+        switch(toState.name) {
             case 'login':
                 $rootScope.isCoverView = true;
                 break;
@@ -138,7 +157,6 @@ angular.module('app').run(function($rootScope) {
                 $rootScope.isCoverView = false;
                 break;
         }
-
     });
 
     $rootScope.safeApply = function(fn) {

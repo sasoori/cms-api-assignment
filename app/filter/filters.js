@@ -1,7 +1,7 @@
 /*global moment */
 angular.module('app').filter('dateMomentUtc', function() {
     return function(input) {
-        return moment.utc(input).format("MMM Do YYYY");
+        return moment.utc(input).format("Do MMM YYYY");
     };
 });
 angular.module('app').filter('slugify', function() {

@@ -1,6 +1,6 @@
-angular.module('app').controller('ProjectsCtrl',function($scope, projectsService, $state, $filter){
+angular.module('app').controller('ProjectsCtrl',function($scope, projectService, $state, $filter){
 
-    $scope.projects = projectsService.model.projectsList;
+    $scope.projects = projectService.model.projectsList;
     $scope.onAddProject = function () {
         $state.go('root.projects.add-project')
     };
@@ -8,7 +8,7 @@ angular.module('app').controller('ProjectsCtrl',function($scope, projectsService
         if (action === 'edit') {
             $state.go('root.projects.edit-project', {id: project._id, slug: $filter('slugify')(project.name)});
         } else {
-            $state.go('root.projects.single-project', {id: project._id, slug: $filter('slugify')(project.name)});
+            $state.go('root.projects.project', {id: project._id, slug: $filter('slugify')(project.name)});
         }
 
     }
