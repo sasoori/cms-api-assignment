@@ -1,0 +1,24 @@
+{
+  "name": "site",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "FranciZ <franci@proxima.si>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {
+    "livereload-js": "^2.2.1"
+  }
+}

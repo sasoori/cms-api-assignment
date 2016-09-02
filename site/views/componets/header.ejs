@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<html>
+<head>
+    <script src="http://localhost:35727/livereload.js" data-concat="false"></script>
+    <script src="/static/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/static/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/dist/main.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/libs/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/dist/main.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a href="/" class="nav-button <%- pageName === 'articles'?'selected':'' %>">Articles</a>
+            <a href="/about" class="nav-button <%- pageName === 'about'?'selected':'' %>">About</a>
+            <a href="/portfolio" class="nav-button <%- pageName === 'portfolio'?'selected':'' %>">Portfolio</a>
+        </div>
+    </nav>
+</header>
