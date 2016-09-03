@@ -4,7 +4,7 @@ var authMiddleware = require('../../middlewares/auth');
 module.exports = function(server) {
 
     // GET PROJECTS
-    server.get('/projects', authMiddleware, function(req, res) {
+    server.get('/projects', function(req, res) {
         const Project = mongoose.model('Project');
         Project.find(function(err, docs) {
             if(err) {
@@ -35,7 +35,7 @@ module.exports = function(server) {
         })
     });
     // GET PROJECT
-    server.get('/project/:id', authMiddleware, function(req, res) {
+    server.get('/project/:id', function(req, res) {
         const Project = mongoose.model('Project');
         Project.findById(req.params.id, function(err, doc) {
             if (err) {

@@ -13,7 +13,7 @@ module.exports = function(server) {
         }
         var userData = req.body;
         var Account = mongoose.model('Account');
-        Account.findOne({email:userData.email}, function(err, accountDoc) {
+        Account.findOne({ email:userData.email }, function(err, accountDoc) {
             if (accountDoc) {
                 bcrypt.compare(userData.password, accountDoc.password, function(err, result) {
                     if (result) {

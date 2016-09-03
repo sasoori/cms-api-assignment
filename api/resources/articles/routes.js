@@ -4,7 +4,7 @@ const _ = require('lodash');
 
 module.exports = function(server) {
     // GET ARTICLES
-    server.get('/articles', authMiddleware, function(req, res) {
+    server.get('/articles', function(req, res) {
         var Article = mongoose.model('Article');
         Article.find(function(err, docs) {
             res.send(docs);
@@ -12,15 +12,16 @@ module.exports = function(server) {
 
     });
     //GET ARTICLE
-    server.get('/article/:id', authMiddleware, function(req, res) {
-        const Project = mongoose.model('Article');
-        Project.findById(req.params.id, function(err, doc) {
+    server.get('/article/:id', function(req, res) {
+        const Article = mongoose.model('Article');
+        Article.findByIdAndUpdate(req.params.id, {$inc: { views: 1 }}, function(err, doc) {
             if (err) {
+                console.log(err);
                 res.status(400).send(err);
-            } else {
+            }  else {
                 res.send(doc);
             }
-        })
+        });
     });
     // EDIT ARTICLE
     server.put('/article/:id', authMiddleware, function(req, res) {
