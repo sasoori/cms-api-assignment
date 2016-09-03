@@ -1,0 +1,38 @@
+    <div class="footer text-center">
+        <div class="pagination "> <!-- PAGINATION -->
+            <div class="ui buttons">
+                <% if (pageNum !== 1) { %>
+                <a href="?page=<%- pageNum - 1 %>">
+                    <button class="ui icon button">
+                        <i class="left chevron icon"></i>
+                    </button>
+                </a>
+                <% }
+                for (var i = 1; i <= numPages; i++) {
+                    if (numPages > 1) {
+                        if (pageNum !== i) { %>
+                        <a href="?page=<%- i %>">
+                            <button class="ui button">
+                                <%- i %>
+                            </button>
+                        </a>
+                        <% } else { %>
+                        <button class="active ui button">
+                            <%- i %>
+                        </button>
+                        <% }
+                    }
+                }
+                if (pageNum !== numPages) { %>
+                <a href="?page=<%- pageNum + 1 %>">
+                    <button class="ui right icon button">
+                        <i class="right chevron icon"></i>
+                    </button>
+                </a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

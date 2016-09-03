@@ -1,0 +1,39 @@
+<% include /componets/header.ejs %>
+    <div class="col-md-8 col-md-offset-2 project-container">
+        <div class="row">
+            <div class="ui one cards fluid">
+                <div class="card card-large">
+                    <div <%- 'class="image text-center ' + project.background + '"'  %>>
+                        <h1 class="card-title cms-white">
+                            <%- frameworkDisplay(project.framework, true) %><span class="bold"><%- frameworkDisplay(project.framework) %></span>
+                        </h1>
+                    </div>
+                    <div class="content">
+                        <div class="card-header">
+                            <h2 class="title-header"><%- project.name %></h2>
+                            <div class="meta">
+                                Started on
+                                <span class="date"><%- moment.utc(project.dateCreated).format("Do MMM YYYY"); %></span>
+                            </div>
+                        </div>
+                        <div class="body">
+                            <h4>About project</h4>
+                            <p class="description"><%- project.description %></p>
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <div class="category">
+
+                            <% _.each(project.languages, function(language) { %>
+                                <div class="ui label"><i class="code icon"></i><%- language %></div>
+                           <% })%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+</body>
+</html>

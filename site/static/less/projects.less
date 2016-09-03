@@ -1,0 +1,124 @@
+.bg-red {
+    //  background: linear-gradient(135deg, rgba(236,22,87,0.8) 0%,rgba(150,22,87,0.7) 100%)!important;
+    background: linear-gradient(to right, #e53935 , #c15d5b) !important;
+}
+.bg-violet {
+    background: linear-gradient(135deg, rgba(236,22,87,0.8) 0%,rgba(150,22,87,0.7) 100%) !important;
+}
+
+.bg-orange {
+    background: #FF8F5E!important;
+    ///background: linear-gradient(to left, #00C9FF , #92FE9D)!important;
+}
+.no-bg {
+    h1 {
+        color: @cms-black !important;
+    }
+    background-color: #f3f3f3;
+    height: 200px;
+}
+.ui.card>.content, .ui.cards>.card>.content {
+
+    & .meta {
+        padding-top: 0;
+    }
+    & .description {
+        font-weight: 400;
+        margin: 0.3em 0 0 !important;
+        color: rgba(0,0,0,.5);
+        white-space: nowrap;
+        overflow: hidden;
+        width: 70%;
+        text-overflow: ellipsis;
+    }
+}
+.ui.card>.content.extra, .ui.cards>.card>.content.extra {
+    padding: 1em !important;
+}
+.card, .card-large {
+    a:active {
+        text-decoration: underline;
+    }
+    .header {
+        display: inline-block !important;
+    }
+    .card-title {
+        font-weight: 200;
+        font-size: 40px;
+        line-height: 200px;
+    }
+    .status {
+        width: 10px;
+        height: 10px;
+        margin-bottom: 2px;
+        margin-right: 5px;
+        border-radius: 50%;
+        display: inline-block;
+
+        &.ACTIVE {
+            background-color: #00B5AD;
+        }
+        &.INACTIVE {
+            background-color: #A5673F;
+        }
+        &.DEAD {
+            background-color: black;
+        }
+    }
+}
+.card {
+    .image {
+        height: 210px;
+    }
+}
+.ui.cards >.card.card-large {
+
+    .image {
+        height: 300px;
+    }
+    .card-title {
+        font-size: 5em;
+        line-height: 300px;
+    }
+    h2.title-header {
+        font-weight: bold;
+        font-size: 3em;
+        text-transform: capitalize;
+        margin: 0 0 7px;
+        width: 90%;
+        line-height: 1;
+        text-align: left;
+    }
+    .card-header {
+        margin: 20px 0 70px;
+    }
+    .content {
+        min-height: 500px;
+        padding: 3em 5em 5em;
+        & .description {
+            text-overflow: initial;
+            overflow: visible;
+            white-space: inherit;
+        }
+        h4, .h4 {
+            font-size: 18px!important;
+        }
+    }
+    .body {
+        margin-top: 50px;
+    }
+    .content.extra {
+        padding: 3em 4em 4.5em !important;
+        height: 0;
+        i {
+            vertical-align: middle;
+            margin-top: -8px !important;
+        }
+        .category > div {
+            display: inline-block;
+            margin-right: 10px;
+            background-color: #c9c7c7;
+            color: #f3f3f3;
+        }
+    }
+}

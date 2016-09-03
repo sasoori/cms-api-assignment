@@ -16,7 +16,10 @@
   ],
   "dependencies": {
     "jquery": "^3.0.0",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "lodash": "^4.15.0",
+    "semantic": "semantic-ui#^2.2.4",
+    "moment": "^2.14.1"
   },
   "devDependencies": {
     "livereload-js": "^2.2.1"
