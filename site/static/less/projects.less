@@ -36,9 +36,7 @@
     padding: 1em !important;
 }
 .card, .card-large {
-    a:active {
-        text-decoration: underline;
-    }
+
     .header {
         display: inline-block !important;
     }
@@ -69,6 +67,12 @@
 .card {
     .image {
         height: 210px;
+    }
+    .content {
+
+        a:active {
+            text-decoration: underline;
+        }
     }
 }
 .ui.cards >.card.card-large {
@@ -110,6 +114,7 @@
     .content.extra {
         padding: 3em 4em 4.5em !important;
         height: 0;
+
         i {
             vertical-align: middle;
             margin-top: -8px !important;
@@ -117,8 +122,11 @@
         .category > div {
             display: inline-block;
             margin-right: 10px;
-            background-color: #c9c7c7;
-            color: #f3f3f3;
+            background-color: #c9c9c9;
+            color: #6b6b6b;
         }
+    }
+    .extra.project {
+        background-color: white !important;
     }
 }

@@ -174,10 +174,6 @@ body {
 .ui.cards > .card > .content.extra {
   padding: 1em !important;
 }
-.card a:active,
-.card-large a:active {
-  text-decoration: underline;
-}
 .card .header,
 .card-large .header {
   display: inline-block !important;
@@ -211,6 +207,9 @@ body {
 }
 .card .image {
   height: 210px;
+}
+.card .content a:active {
+  text-decoration: underline;
 }
 .ui.cards > .card.card-large .image {
   height: 300px;
@@ -258,7 +257,10 @@ body {
 .ui.cards > .card.card-large .content.extra .category > div {
   display: inline-block;
   margin-right: 10px;
-  background-color: #c9c7c7;
-  color: #f3f3f3;
+  background-color: #c9c9c9;
+  color: #6b6b6b;
+}
+.ui.cards > .card.card-large .extra.project {
+  background-color: white !important;
 }
 /*# sourceMappingURL=main.min.css.map */
