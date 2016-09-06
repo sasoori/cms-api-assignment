@@ -13,8 +13,7 @@ angular.module('app').directive('toolbar', function() {
         link: function(scope, element, attrs, fn, $state) {
             scope.onAction = function(action) {
                 scope.btnAction.call(this, { action : action});
-            }
-
+            };
         }
     };
 });

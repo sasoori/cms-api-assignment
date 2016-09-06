@@ -27,14 +27,14 @@ angular.module('app').directive('articleForm', function() {
             };
             scope.save = function () {
                 if (_.isFunction(scope.saveArticle)) {
-                    scope.saveArticle.call(this, {article: scope.article, editedArticle: scope.editedArticle})
+                    scope.saveArticle.call(this, {article: scope.article, editedArticle: scope.editedArticle});
                 }
             };
             _.each(editableFields, function (field) {
                 scope.article[field.field] = field.defaultValue;
             });
             if (scope.editedArticle) {
-                scope.editedArticle = _.cloneDeep(scope.editedArticle);
+                //scope.editedArticle = _.cloneDeep(scope.editedArticle);
                 _.each(editableFields, function (field) {
                     if (scope.editedArticle[field.field] !== undefined) {
                         scope.article[field.field] = scope.editedArticle[field.field];
@@ -43,5 +43,5 @@ angular.module('app').directive('articleForm', function() {
             }
 
         }
-    }
+    };
 });

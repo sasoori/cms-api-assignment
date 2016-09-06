@@ -78,7 +78,7 @@ angular.module('app').directive('projectForm', function() {
             };
             scope.save = function () {
                if (_.isFunction(scope.saveProject)) {
-                   scope.saveProject.call(this, { project: scope.project, editedProject: scope.editedProject })
+                   scope.saveProject.call(this, { project: scope.project, editedProject: scope.editedProject });
                }
             };
             _.each(editableFields, function (field) {
@@ -86,7 +86,7 @@ angular.module('app').directive('projectForm', function() {
             });
 
             if (scope.editedProject) {
-                scope.editedProject = angular.copy(scope.editedProject);
+                //scope.editedProject = angular.copy(scope.editedProject);
                 _.each(editableFields, function(field) {
                     if (scope.editedProject[field.field] !== undefined) {
                         scope.project[field.field] = scope.editedProject[field.field];

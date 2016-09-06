@@ -33,13 +33,13 @@ angular.module('app').factory('authService',function($http, $rootScope, $q, Sess
                     deferred.reject(error);
                 });
                 return deferred.promise;
-            })
+            });
         },
         setToken: function(userData) {
             return $localForage.setItem('user', userData).then(function(userData) {
                 Session.model.user = userData;
                 return userData;
-            })
+            });
         },
         getToken:function(){
             return $localForage.getItem('user').then(function(userData){

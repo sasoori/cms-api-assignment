@@ -3,5 +3,7 @@ angular.module('app').controller('AddArticleCtrl',function($scope, $state, artic
         articleService.saveArticle(article).then(function () {
             $state.go('root.articles',  {}, { reload: true });
         });
-    }
+    };
+
+
 });

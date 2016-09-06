@@ -1,23 +1,19 @@
+/*
 
-@import "bower_components/bootstrap/less/bootstrap.less";
 @import "bower_components/ng-tags-input/ng-tags-input.min.css";
-//@import "bower_components/bootstrap/less/theme.less";
-@import "bower_components/font-awesome/less/font-awesome.less";
 @import 'https://fonts.googleapis.com/css?family=Lato:300,400,700';
 @import "bower_components/angular-loading-bar/build/loading-bar.min.css";
-@fa-font-path: "bower_components/font-awesome/fonts";
 @import "bower_components/semantic/dist/semantic.min.css";
 @import "bower_components/ng-dialog/css/ngDialog.min.css";
-@import "bower_components/sweetalert/dist/sweetalert.css";
+@import "bower_components/sweetalert/dist/sweetalert.css";*/
 /* Component LESS */
+//@import "bower_components/bootstrap/less/bootstrap.less";
 @import "partial/common/sidebar/sidebar.less";
 @import "partial/authentication/login/login.less";
 @import "partial/authentication/logout/logout.less";
 @import "partial/projects/projects.less";
 @import "partial/common/cms-toolbar/toolbar.less";
 @import "partial/projects/cms-project-card/project-card.less";
-@import "styles/helpers.less";
-@import "styles/responsive.less";
 @import "partial/projects/add-project/add-project.less";
 @import "partial/projects/edit-project/edit-project.less";
 @import "partial/projects/cms-project-form/project-form.less";
@@ -27,7 +23,10 @@
 @import "partial/articles/add-article/add-article.less";
 @import "partial/articles/cms-article-form/article-form.less";
 @import "partial/articles/article/article.less";
-/* Add Component LESS Above */
+@import "styles/helpers.less";
+
+
+/*Component LESS Above */
 
 /* Required for Angular UI Bootstrap */
 .nav, .pagination, .carousel, .panel-title a {
@@ -63,6 +62,7 @@ body {
 h1 {
   font-size: 25px;
 }
+
 h2 {
   font-size: 20px;
   font-weight: 200;
@@ -84,40 +84,45 @@ h2 {
   border-radius: 3px;
 }
 
-.btn-blue {
-  color: #4A4949;
-  font-weight: 200;
-
-}
 .cms-white {
   color: @cms-lightgray;
 }
+
 .cms-red {
   color: red;
 }
 
-.my-container{
-    width: 100%;
-    height: calc(~"100% - 120px") !important;
-    margin-top: 120px;
+.my-container {
+  width: 100%;
+  height: calc(~"100% - 120px") !important;
+  margin-top: 120px;
 }
+
 .card-container {
   width: 1130px;
   margin-left: auto;
   margin-right: auto;
 }
+
 .container-padding {
   padding-top: 50px;
   padding-bottom: 20px;
   box-sizing: border-box;
 }
+
 // Softer shadow
-.ui.cards > .card  {
-    box-shadow: 0 1px 3px 0 #D4D4D5,0 0 0 0 #D4D4D5
+.ui.cards > .card {
+  box-shadow: 0 1px 3px 0 #D4D4D5, 0 0 0 0 #D4D4D5;
+  .body {
+    p, span, h1, h2, h3, h4 {
+      font-family: 'Lato', sans-serif !important;
+      font-size: 110% !important;
+    }
+  }
 }
 
 .ui.form input:not([type]), .ui.form input[type=text], .ui.form input[type=email], .ui.form input[type=search], .ui.form input[type=password], .ui.form input[type=date], .ui.form input[type=datetime-local], .ui.form input[type=tel], .ui.form input[type=time], .ui.form input[type=url], .ui.form input[type=number] {
-    padding: 0.5em 1em;
+  padding: 0.5em 1em;
 }
 
 #loading-bar .bar {
@@ -125,14 +130,23 @@ h2 {
   z-index: 999;
   top: 0;
 }
+
 textarea {
   resize: none !important;
 }
+
 .clear-fix {
 
   clear: both;
 }
+
 .no-gutter {
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+
+.single-container {
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -1,6 +1,8 @@
-angular.module('app').controller('SingleProjectCtrl',function($scope, project){
+angular.module('app').controller('SingleProjectCtrl',function($scope, $filter, project, $state){
     $scope.project = project;
-
+    $scope.onAction = function() {
+        $state.go('root.projects.edit-project', {id: project._id, slug: $filter('slugify')(project.name)});
+    };
     $scope.frameworkDisplay = function(value, notPrefix) {
         if ($scope.project.framework) {
             if (notPrefix) {

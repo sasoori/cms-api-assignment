@@ -3,7 +3,7 @@ angular.module('app').controller('ArticlesCtrl',function($scope, articleService,
     $scope.selectAll = false;
     $scope.onSelectAll = function() {
         _.each($scope.articles, function (key) {
-            _.assign(key , {'selected': $scope.selectAll})
+            _.assign(key , {'selected': $scope.selectAll});
         });
     };
     $scope.onOpenArticle = function(article) {

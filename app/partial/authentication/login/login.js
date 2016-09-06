@@ -7,7 +7,7 @@ angular.module('app').controller('LoginCtrl' ,function($rootScope, $scope, $stat
             $state.go('root.projects');
         }, function(response) {
 
-        })
+        });
     };
     
 });

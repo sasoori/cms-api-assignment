@@ -1,33 +1,31 @@
-<toolbar btn-action="oneEditProject()" title="Projects" btn-text="Edit project" btn-icon="code"></toolbar>
-<div class="projects-container single-project-container my-container">
-    <div class="card-container">
-        <div class="ui one cards fluid">
-            <div class="card card-large">
-                <div class="image text-center" ng-class="(preview === true) ? project.background.cssClass : project.background">
-                    <h1 class="card-title cms-white">
-                        <span>{{frameworkDisplay(project.framework, true)}}</span><span class="bold">{{frameworkDisplay(project.framework)}}</span>
-                    </h1>
-                </div>
-                <div class="content">
-                    <div class="card-header">
-                        <h2 class="title-header" ng-bind="project.name"></h2>
-                        <div class="meta">
-                            Started on
-                            <span class="date" ng-bind="project.dateCreated | dateMomentUtc"></span>
-                        </div>
-                    </div>
-                    <div class="body">
-                        <h4>About project</h4>
-                        <p class="description" ng-if="project.description" ng-bind="project.description"></p>
+<toolbar btn-action="onAction(action)" title="Projects" btn-text="Edit project" btn-icon="code"></toolbar>
+<div class="projects-container single-container my-container">
+    <div class="ui one cards fluid">
+        <div class="card card-large">
+            <div class="image text-center" ng-class="(preview === true) ? project.background.cssClass : project.background">
+                <h1 class="card-title cms-white">
+                    <span>{{frameworkDisplay(project.framework, true)}}</span><span class="bold">{{frameworkDisplay(project.framework)}}</span>
+                </h1>
+            </div>
+            <div class="content">
+                <div class="card-header">
+                    <h2 class="title-header" ng-bind="project.name"></h2>
+                    <div class="meta">
+                        Started on
+                        <span class="date" ng-bind="project.dateCreated | dateMomentUtc"></span>
                     </div>
                 </div>
-                <div class="extra content">
-                    {{project.id}}
-                    <a ng-click="onAction('edit')">
-                        <i class="code icon"></i>
-                        Edit
-                    </a>
+                <div class="body">
+                    <h4>About project</h4>
+                    <p class="description" ng-if="project.description" ng-bind="project.description"></p>
                 </div>
+            </div>
+            <div class="extra content">
+                {{project.id}}
+                <a ng-click="onAction('edit')">
+                    <i class="code icon"></i>
+                    Edit
+                </a>
             </div>
         </div>
     </div>

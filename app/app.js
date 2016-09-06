@@ -136,6 +136,21 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
             }
         }
     });
+    $stateProvider.state('root.articles.edit-article', {
+        url: '/edit/:id/:title',
+        views: {
+            "main@" : {
+                controller: 'EditArticleCtrl',
+                templateUrl: 'partial/articles/edit-article/edit-article.html',
+                resolve: {
+                    article: function(articleService, $stateParams) {
+                        return articleService.getArticle($stateParams.id);
+                    }
+                }
+            }
+        }
+
+    });
     /* Add New States Above */
     $urlRouterProvider.otherwise('/login');
 });

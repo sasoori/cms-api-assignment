@@ -1,0 +1,35 @@
+<toolbar btn-action="onEditArticle(action)" title="Article" btn-text="Edit Article" btn-icon="code"></toolbar>
+<div class="projects-container single-container my-container">
+    <div class="ui one cards fluid">
+        <div class="card card-large">
+            <div class="image text-center">
+            </div>
+            <div class="content">
+                <div class="card-header">
+                    <h2 class="title-header" ng-bind="article.title"></h2>
+                    <div class="meta">
+                        Started on
+                        <span class="date" ng-bind="article.dateCreated | dateMomentUtc"></span>
+                    </div>
+                </div>
+                <div class="body">
+                    <p class="description" ng-bind-html="content"></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <div class="category">
+                    <i class="tag icon"></i>
+                    <span ng-bind="article.category"></span>
+                </div>
+                <div class="">
+                    <i class="user icon"></i>
+                    Written by <span ng-bind="article.author"></span>
+                </div>
+                <div class="views">
+                    <i class="eye icon"></i>
+                    <span ng-bind="article.views"></span> Views
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

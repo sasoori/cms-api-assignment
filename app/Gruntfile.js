@@ -13,21 +13,21 @@ var createFolderGlobs = function(fileTypePatterns) {
   var ignore = ['node_modules','bower_components','dist','temp'];
   var fs = require('fs');
   return fs.readdirSync(process.cwd())
-          .map(function(file){
-            if (ignore.indexOf(file) !== -1 ||
-                file.indexOf('.') === 0 ||
-                !fs.lstatSync(file).isDirectory()) {
-              return null;
-            } else {
-              return fileTypePatterns.map(function(pattern) {
-                return file + '/**/' + pattern;
-              });
-            }
-          })
-          .filter(function(patterns){
-            return patterns;
-          })
-          .concat(fileTypePatterns);
+      .map(function(file){
+        if (ignore.indexOf(file) !== -1 ||
+            file.indexOf('.') === 0 ||
+            !fs.lstatSync(file).isDirectory()) {
+          return null;
+        } else {
+          return fileTypePatterns.map(function(pattern) {
+            return file + '/**/' + pattern;
+          });
+        }
+      })
+      .filter(function(patterns){
+        return patterns;
+      })
+      .concat(fileTypePatterns);
 };
 
 module.exports = function (grunt) {
@@ -49,9 +49,9 @@ module.exports = function (grunt) {
     watch: {
       main: {
         options: {
-            livereload: 35730,
-            livereloadOnError: false,
-            spawn: false
+          livereload: 35730,
+          livereloadOnError: false,
+          spawn: false
         },
         files: [createFolderGlobs(['*.js','*.less','*.html']),'!_SpecRunner.html','!.grunt'],
         tasks: [] //all the tasks are run dynamically during the watch event handler
@@ -60,7 +60,7 @@ module.exports = function (grunt) {
     jshint: {
       main: {
         options: {
-            jshintrc: '.jshintrc'
+          jshintrc: '.jshintrc'
         },
         src: createFolderGlobs('*.js')
       }
@@ -78,15 +78,15 @@ module.exports = function (grunt) {
         options: {
         },
         files: {
-          'temp/app.css': 'styles/app.less'
+          'temp/app.css': 'app.less'
         }
       }
     },
     ngtemplates: {
       main: {
         options: {
-            module: pkg.name,
-            htmlmin:'<%= htmlmin.main.options %>'
+          module: pkg.name,
+          htmlmin:'<%= htmlmin.main.options %>'
         },
         src: [createFolderGlobs('*.html'),'!index.html','!_SpecRunner.html'],
         dest: 'temp/templates.js'
@@ -96,11 +96,9 @@ module.exports = function (grunt) {
       main: {
         files: [
           {src: ['img/**'], dest: 'dist/'},
-          {src: ['bower_components/font-awesome/fonts/**'], dest: 'dist/',filter:'isFile',expand:true},
-          {src: ['bower_components/bootstrap/fonts/**'], dest: 'dist/',filter:'isFile',expand:true}
-          //{src: ['bower_components/angular-ui-utils/ui-utils-ieshiv.min.js'], dest: 'dist/'},
-          //{src: ['bower_components/select2/*.png','bower_components/select2/*.gif'], dest:'dist/css/',flatten:true,expand:true},
-          //{src: ['bower_components/angular-mocks/angular-mocks.js'], dest: 'dist/'}
+          {src: ['bower_components/semantic/dist/themes/default/assets/fonts/**'], dest: 'dist/themes/default/assets/fonts/',filter:'isFile', flatten:true, expand:true},
+          //  {cwd: 'bower_components/tinymce-dist/', src: ['plugins/**', 'themes/**', 'skins/**'], dest: 'dist/', filter: 'isFile', expand:true}
+
         ]
       }
     },
@@ -108,8 +106,8 @@ module.exports = function (grunt) {
       read: {
         options: {
           read:[
-            {selector:'script[data-concat!="false"]',attribute:'src',writeto:'appjs'},
-            {selector:'link[rel="stylesheet"][data-concat!="false"]',attribute:'href',writeto:'appcss'}
+            {selector:'script[data-concat!="false"]', attribute:'src', writeto:'appjs'},
+            {selector:'link[rel="stylesheet"][data-concat!="false"]', attribute:'href', writeto:'vendorcss', isPath:true}
           ]
         },
         src: 'index.html'
@@ -118,8 +116,9 @@ module.exports = function (grunt) {
         options: {
           remove: ['script[data-remove!="false"]','link[data-remove!="false"]'],
           append: [
-            {selector:'body',html:'<script src="app.full.min.js"></script>'},
-            {selector:'head',html:'<link rel="stylesheet" href="app.full.min.css">'}
+            {selector:'head',html:'<link rel="stylesheet" href="vendor.full.min.css">'},
+            {selector:'head',html:'<link rel="stylesheet" href="app.full.min.css">'},
+            {selector:'body',html:'<script src="app.full.min.js"></script>'}
           ]
         },
         src:'index.html',
@@ -128,8 +127,12 @@ module.exports = function (grunt) {
     },
     cssmin: {
       main: {
-        src:['temp/app.css','<%= dom_munger.data.appcss %>'],
+        src:['temp/app.css'],
         dest:'dist/app.full.min.css'
+      },
+      vendor: {
+        src: ['<%= dom_munger.data.vendorcss %>'],
+        dest:'dist/vendor.full.min.css'
       }
     },
     concat: {
@@ -153,13 +156,7 @@ module.exports = function (grunt) {
     htmlmin: {
       main: {
         options: {
-          collapseBooleanAttributes: true,
-          collapseWhitespace: true,
-          removeAttributeQuotes: true,
-          removeComments: true,
-          removeEmptyAttributes: true,
-          removeScriptTypeAttributes: true,
-          removeStyleLinkTypeAttributes: true
+
         },
         files: {
           'dist/index.html': 'dist/index.html'

@@ -2,7 +2,7 @@ angular.module('app').controller('ProjectsCtrl',function($scope, projectService,
 
     $scope.projects = projectService.model.projectsList;
     $scope.onAddProject = function () {
-        $state.go('root.projects.add-project')
+        $state.go('root.projects.add-project');
     };
     $scope.onAction = function(project, action) {
         if (action === 'edit') {
@@ -10,6 +10,5 @@ angular.module('app').controller('ProjectsCtrl',function($scope, projectService,
         } else {
             $state.go('root.projects.project', {id: project._id, slug: $filter('slugify')(project.name)});
         }
-
-    }
+    };
 });

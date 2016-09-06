@@ -14,7 +14,7 @@ angular.module('app').factory('articleService',function($http, $q, IP) {
                 articleService.model.articleList = res.data;
                 deferred.resolve(res.data);
             }, function (error) {
-                deferred.reject(error)
+                deferred.reject(error);
             });
             return deferred.promise;
         },
@@ -48,7 +48,7 @@ angular.module('app').factory('articleService',function($http, $q, IP) {
             }).then(function(res) {
                 deferred.resolve(res.data);
             }, function (error) {
-                deferred.reject(error)
+                deferred.reject(error);
             });
             return deferred.promise;
         },
@@ -65,7 +65,7 @@ angular.module('app').factory('articleService',function($http, $q, IP) {
                 articleService.model.articleList = res.data;
                 deferred.resolve(res.data);
             }, function (error) {
-                deferred.reject(error)
+                deferred.reject(error);
             });
             return deferred.promise;
         }
