@@ -1,5 +1,7 @@
 const mongoose  = require('mongoose');
+const _ = require('lodash');
 var authMiddleware = require('../../middlewares/auth');
+
 
 module.exports = function(server) {
 
@@ -44,5 +46,17 @@ module.exports = function(server) {
                 res.send(doc);
             }
         })
+    });
+    // DELETE PROJECTS
+    server.delete('/project', authMiddleware, function(req, res) {
+        var idList = JSON.parse(req.query.list);
+        var Project = mongoose.model('Project');
+        Project.remove({'_id': { $in: idList}}, function(err, docs){
+            if (err) {
+                res.status(400).send(err);
+            } else {
+                res.send(idList);
+            }
+        });
     });
 };

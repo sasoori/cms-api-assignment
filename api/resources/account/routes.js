@@ -67,8 +67,6 @@ module.exports = function(server) {
             });
         });
     });
-
-
     server.post('/account/checkLogin', authMiddleware, function(req, res) {
         res.status(200).send(res.data);
     });

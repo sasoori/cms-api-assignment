@@ -2,7 +2,6 @@
 var mongoose = require('mongoose');
 
 var Schema = new mongoose.Schema({
-
     nickname: String,
     email: { type : String, unique : true, required:true },
     password: String,
@@ -16,7 +15,6 @@ var Schema = new mongoose.Schema({
             }
         }
     ]
-
 });
 
 mongoose.model('Account', Schema);

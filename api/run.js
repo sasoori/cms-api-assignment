@@ -4,10 +4,10 @@ const config = require('./config');
 
 database.connect()
     .then(server.init)
-    .then((server)=>{
+    .then(function(server){
         require('./resources')(server);
     })
-    .then(()=> {
+    .then(function(){
         console.log('All is well | on port:', config.PORT);
     })
     .catch(function(err) {

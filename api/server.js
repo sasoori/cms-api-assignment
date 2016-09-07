@@ -6,20 +6,11 @@ const cors = require('cors');
 
 server.use(bodyParser.json());
 server.use(cors());
-server.use(bodyParser.urlencoded({extended:true}));
+server.use(bodyParser.urlencoded( {extended:true} ));
 server.use(expressValidator());
 
-exports.init = ()=>{
-
+exports.init = function() {
     server.listen(3010, '0.0.0.0', function() {
     });
-
     return server;
-
-};
-
-exports.getServer = ()=>{
-
-
-
 };

@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
-const schema = new mongoose.Schema({
+const schema = new mongoose.Schema ({
     name         : String,
     framework    : String,
     description  : String,
     background   : String,
-    status       : {type: String, enum: ['ACTIVE', 'INACTIVE', 'DEAD']},
+    status       : { type: String, enum: ['ACTIVE', 'INACTIVE', 'DEAD'] },
     teamMembers  : [String],
-    dateCreated  : {type:Date, default: Date.now},
+    dateCreated  : { type:Date, default: Date.now },
     languages    : [String]
 });
 

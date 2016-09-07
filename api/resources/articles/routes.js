@@ -9,7 +9,6 @@ module.exports = function(server) {
         Article.find(function(err, docs) {
             res.send(docs);
         });
-
     });
     //GET ARTICLE
     server.get('/article/:id', function(req, res) {
@@ -50,21 +49,15 @@ module.exports = function(server) {
         });
     });
     // DELETE ARTICLES
-    server.post('/articles/delete', authMiddleware, function(req, res) {
-        var isError = false;
-        var articleList = JSON.parse(req.query.list);
+    server.delete('/articles', authMiddleware, function(req, res) {
+        var idList = JSON.parse(req.query.list);
         var Article = mongoose.model('Article');
-        _.each(articleList, function (id) {
-            Article.findByIdAndRemove(id, function(err, doc) {
-                if (err) {
-                    isError = true;
-                }
-            });
+        Article.remove({'_id': { $in: idList}}, function(err, docs){
+            if (err) {
+                res.status(400).send(err);
+            } else {
+                res.send(idList);
+            }
         });
-        if (!isError) {
-            res.send(articleList);
-        } else {
-            res.sendStatus(400);
-        }
     });
 };
