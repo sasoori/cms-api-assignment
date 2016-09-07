@@ -5,9 +5,8 @@ angular.module('app').factory('projectService',function($http, $q, IP) {
         model: {
             projectsList : {}
         },
-        getProjects: function () {
+        getProjects: function() {
             var deferred = $q.defer();
-
             $http({
                 method: 'GET',
                 url: IP + '/projects',
@@ -21,9 +20,8 @@ angular.module('app').factory('projectService',function($http, $q, IP) {
 
             return deferred.promise;
         },
-        getProject: function (id) {
+        getProject: function(id) {
             var deferred = $q.defer();
-
             $http({
                 method: 'GET',
                 url: IP + '/project/' + id,
@@ -40,6 +38,7 @@ angular.module('app').factory('projectService',function($http, $q, IP) {
             var deferred= $q.defer();
             var projectId = '';
             var project = newProject;
+            newProject.background = newProject.background.cssClass;
 
             if (editedProject) {
                 project = _.extend(editedProject, newProject);
@@ -52,10 +51,26 @@ angular.module('app').factory('projectService',function($http, $q, IP) {
                 ignoreLoadingBar: false
             }).then(function (res) {
                 deferred.resolve(res);
-            }, function (error) {
+            }, function(error) {
                 deferred.reject(error);
             });
-
+            return deferred.promise;
+        },
+        deleteProjects: function(selectedProjects) {
+            var deferred = $q.defer();
+            $http({
+                method: 'DELETE',
+                url: IP + '/project',
+                params: {
+                    list: JSON.stringify(selectedProjects)
+                },
+                ignoreLoadingBar: false
+            }).then(function(res) {
+                projectService.model.projectList = res.data;
+                deferred.resolve(res.data);
+            }, function(error) {
+                deferred.reject(error);
+            });
             return deferred.promise;
         }
     };

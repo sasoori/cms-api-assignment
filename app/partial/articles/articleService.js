@@ -36,7 +36,6 @@ angular.module('app').factory('articleService',function($http, $q, IP) {
             }, function (error) {
                 deferred.reject(error);
             });
-
             return deferred.promise;
         },
         getArticle: function(articleID) {
@@ -55,8 +54,8 @@ angular.module('app').factory('articleService',function($http, $q, IP) {
         deleteArticles: function(selectedArticles) {
             var deferred = $q.defer();
             $http({
-                method: 'POST',
-                url: IP + '/articles/delete',
+                method: 'DELETE',
+                url: IP + '/articles',
                 params: {
                     list: JSON.stringify(selectedArticles)
                 },

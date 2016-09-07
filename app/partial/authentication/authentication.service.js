@@ -2,7 +2,7 @@ angular.module('app').factory('authService',function($http, $rootScope, $q, Sess
 
     var authService = {
 
-        login: function (credentials) {
+        login: function(credentials) {
             var deferred = $q.defer();
             $http({
                 method: 'POST',
@@ -15,7 +15,6 @@ angular.module('app').factory('authService',function($http, $rootScope, $q, Sess
             }, function(error) {
                  deferred.reject(error);
             });
-
             return deferred.promise;
         },
         isLoggedIn: function() {
@@ -41,7 +40,7 @@ angular.module('app').factory('authService',function($http, $rootScope, $q, Sess
                 return userData;
             });
         },
-        getToken:function(){
+        getToken: function() {
             return $localForage.getItem('user').then(function(userData){
                 if (userData) {
                     Session.model.user = userData;

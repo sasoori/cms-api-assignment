@@ -1,13 +1,13 @@
-angular.module('app').directive('projectForm', function() {
+angular.module('app').directive('projectForm', function(projectService, $timeout) {
     return {
         restrict: 'EA',
         replace: true,
         scope: {
-            saveProject: '&',
             editedProject: '='
         },
         templateUrl: 'partial/projects/cms-project-form/project-form.html',
-        link: function(scope, $state, element, attrs, fn) {
+        link: function(scope, element, attrs, fn) {
+            var eventListeners = [];
             scope.project = {};
             scope.backgroundColors = [
                 {
@@ -66,27 +66,28 @@ angular.module('app').directive('projectForm', function() {
                 'JavaScript'
             ];
 
-            scope.searchLanguages = function ($query) {
+            scope.searchLanguages = function($query) {
                 return _.filter(scope.programmingLanguages, function(element) {
                     return element.toLowerCase().indexOf($query.toLowerCase()) !== -1;
                 });
             };
-            scope.addProject = function () {
-                scope.project.background = scope.project.background.cssClass;
+            scope.addProject = function() {
                 scope.project.languages = _.map(scope.project.languages,'text');
                 scope.save();
             };
-            scope.save = function () {
-               if (_.isFunction(scope.saveProject)) {
-                   scope.saveProject.call(this, { project: scope.project, editedProject: scope.editedProject });
-               }
+            scope.save = function() {
+                projectService.saveProject(_.cloneDeep(scope.project), scope.editedProject).then(function() {
+                    scope.$emit('projectSaveSuccessful');
+                }, function(error) {
+                    scope.$emit('saveFailed', {message: error});
+                });
             };
-            _.each(editableFields, function (field) {
+            _.each(editableFields, function(field) {
                 scope.project[field.field] = field.defaultValue;
             });
 
             if (scope.editedProject) {
-                //scope.editedProject = angular.copy(scope.editedProject);
+                scope.editedProject = _.cloneDeep(scope.editedProject);
                 _.each(editableFields, function(field) {
                     if (scope.editedProject[field.field] !== undefined) {
                         scope.project[field.field] = scope.editedProject[field.field];
@@ -94,7 +95,18 @@ angular.module('app').directive('projectForm', function() {
                 });
                 scope.project.background = _.find(scope.backgroundColors, ['cssClass', scope.project.background]);
             }
+            eventListeners.push(scope.$on('saveProject', function() {
+                $timeout(function() { // to prevent $apply already in progress
+                    $('button[type="submit"]').trigger('click');
+                }, 0);
+            }));
 
+            scope.$on('$destroy', function() {
+                _.forEach(eventListeners, function(listener) {
+                    listener.call();
+                });
+                eventListeners = [];
+            });
         }
     };
 });
