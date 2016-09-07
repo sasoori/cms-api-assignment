@@ -26,7 +26,7 @@ angular.module('app').controller('ArticlesCtrl',function($scope, articleService,
         if (_.isEmpty(selectedItems)) { return; }
         SweetAlert.swal({
             title: "Are you sure?",
-            text: "Your will not be able to selected articles",
+            text: "Your will not be able to restore selected articles",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
@@ -38,5 +38,5 @@ angular.module('app').controller('ArticlesCtrl',function($scope, articleService,
                 $state.reload();
             }
         });
-    }
+    };
 });

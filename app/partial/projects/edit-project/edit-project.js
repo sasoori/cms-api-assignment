@@ -3,7 +3,6 @@ angular.module('app').controller('EditProjectCtrl', function($scope, project, pr
     var eventListeners = [];
     $scope.project = project;
     $scope.onAction = function(action) {
-
         switch(action) {
             case 'add':
                 $scope.$broadcast('saveProject');
@@ -14,12 +13,11 @@ angular.module('app').controller('EditProjectCtrl', function($scope, project, pr
             default:
                 break;
         }
-
     };
     function onRemoveClick() {
         SweetAlert.swal({
             title: "Are you sure?",
-            text: "Your will not be able to selected articles",
+            text: "Your will not be able to restore this project",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
@@ -28,10 +26,10 @@ angular.module('app').controller('EditProjectCtrl', function($scope, project, pr
         }, function(confirm){
             if (confirm) {
                 projectService.deleteProjects([$scope.project._id]);
-                $state.reload();
+                $state.go('root.projects', {}, { reload: true });
             }
         });
-    }
+    };
 
     eventListeners.push($scope.$on('projectSaveSuccessful', function() {
         $state.go('root.projects',  {}, { reload: true });
