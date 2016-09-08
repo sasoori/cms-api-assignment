@@ -29,6 +29,16 @@
                     <textarea ui-tinymce ng-model="article.content" required></textarea>
                 </div>
             </div>
+            <div class="col-lg-12 no-gutter">
+                <div class="upload-button" ngf-select="uploadFiles($file)">
+                    <button type="submit" class="ui icon button">
+                        <i class="image right icon"></i>
+                        Upload Image
+                    </button>
+                </div>
+                <img class="cover" ng-if="article.coverImage" src="http://localhost:3010/article/uploads/{{article.coverImage}}" />
+            </div>
+
             <div class="submit-button">
                 <a ui-sref="root.articles">
                     <button class="ui basic button">Cancel</button>

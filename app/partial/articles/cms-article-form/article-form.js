@@ -1,4 +1,4 @@
-angular.module('app').directive('articleForm', function(articleService, $timeout) {
+angular.module('app').directive('articleForm', function(articleService, $timeout, Upload) {
     return {
         restrict: 'E',
         replace: true,
@@ -14,6 +14,7 @@ angular.module('app').directive('articleForm', function(articleService, $timeout
                 { field: 'title', defaultValue: null },
                 { field: 'category', defaultValue: null },
                 { field: 'author', defaultValue: null },
+                { field: 'coverImage', defaultValue: null },
                 { field: 'content', defaultValue: null }
             ];
             scope.categories = [
@@ -23,11 +24,13 @@ angular.module('app').directive('articleForm', function(articleService, $timeout
                 'Insights'
             ];
             scope.addArticle = function() {
-                scope.save();
+                if (scope.article.content && scope.article.coverImage) {
+                    scope.save();
+                }
             };
             scope.save = function() {
                 articleService.saveArticle(scope.article, scope.editedArticle).then(function() {
-                    scope.$emit('articleSaveSuccessful')
+                    scope.$emit('articleSaveSuccessful');
                 });
             };
             _.each(editableFields, function(field) {
@@ -41,6 +44,23 @@ angular.module('app').directive('articleForm', function(articleService, $timeout
                     }
                 });
             }
+
+            scope.isUploading = false;
+            scope.uploadFiles = function (file) {
+                scope.isUploading = true;
+                Upload.upload({
+                    url: 'http://localhost:3010/article/upload',
+                    data: {
+                        file: file
+                    }
+                }).then(function (resp) {
+                    scope.article.coverImage = resp.data.filename;
+                    scope.isUploading = false;
+                }, function (resp) {
+                    console.log('Error status: ' + resp.status);
+                })
+            };
+
             eventListeners.push(scope.$on('saveArticle', function() {
                 $timeout(function() { // to prevent $apply already in progress
                     $('button[type="submit"]').trigger('click');

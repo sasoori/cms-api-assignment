@@ -7,7 +7,8 @@ angular.module('app', [
     'ngTagsInput',
     'LocalForageModule',
     'oitozero.ngSweetAlert',
-    'ui.tinymce'
+    'ui.tinymce',
+    'ngFileUpload'
 ]);
 
 angular.module('app').config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {

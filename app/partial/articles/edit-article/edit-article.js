@@ -29,7 +29,7 @@ angular.module('app').controller('EditArticleCtrl', function($scope, article, ar
                 $state.go('root.articles', {}, { reload: true });
             }
         });
-    };
+    }
     eventListeners.push($scope.$on('articleSaveSuccessful', function() {
         $state.go('root.articles',  {}, { reload: true });
     }));

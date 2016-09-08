@@ -28,7 +28,7 @@ angular.module('app').controller('ArticleCtrl', function($scope, $state, $filter
                 $state.go('root.articles', {}, { reload: true });
             }
         });
-    };
+    }
     $scope.onEditArticle = function() {
 
     };

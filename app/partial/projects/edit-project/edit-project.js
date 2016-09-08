@@ -29,7 +29,7 @@ angular.module('app').controller('EditProjectCtrl', function($scope, project, pr
                 $state.go('root.projects', {}, { reload: true });
             }
         });
-    };
+    }
 
     eventListeners.push($scope.$on('projectSaveSuccessful', function() {
         $state.go('root.projects',  {}, { reload: true });

@@ -27,7 +27,7 @@ angular.module('app').controller('SingleProjectCtrl',function($scope, $filter, p
                 $state.go('root.projects', {}, { reload: true });
             }
         });
-    };
+    }
     $scope.frameworkDisplay = function(value, notPrefix) {
         if ($scope.project.framework) {
             if (notPrefix) {

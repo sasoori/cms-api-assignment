@@ -38,5 +38,5 @@ angular.module('app').controller('ArticlesCtrl',function($scope, articleService,
                 $state.reload();
             }
         });
-    };
+    }
 });
