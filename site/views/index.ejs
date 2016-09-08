@@ -4,8 +4,9 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="ui two stackable cards">
                     <% _.each(articles, function(article) { %>
-                    <div class="card">
-                        <div ng-click="onAction('open')" class="image text-center" ng-class="(preview === true) ? projectInfo.background.cssClass : projectInfo.background">
+                    <div class="card article">
+                        <div class="image text-center">
+                            <img class="cover" src="http://localhost:3010/article/uploads/<%- article.coverImage %>" />
                         </div>
                         <div class="content">
                             <!--<div class="status" ng-class="projectInfo.status" title="{{projectInfo.status}}"></div>-->
