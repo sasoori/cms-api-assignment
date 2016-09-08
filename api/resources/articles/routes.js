@@ -1,8 +1,29 @@
-const mongoose  = require('mongoose');
-var authMiddleware = require('../../middlewares/auth');
-const _ = require('lodash');
+const authMiddleware = require('../../middlewares/auth');
+const mongoose = require('mongoose');
+const multer = require('multer');
+const mime = require('mime');
+const crypto = require ("crypto");
+
+var storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './uploads/')
+    },
+    filename: function (req, file, cb) {
+        crypto.pseudoRandomBytes(4, function(err, raw) {
+            cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
+        });
+    }
+});
+
+const upload  = multer({ storage: storage });
 
 module.exports = function(server) {
+
+    // UPLOAD IMAGES
+    server.post('/article/upload', authMiddleware, upload.single('file'), function(req,res) {
+        console.log(req.file);
+        res.send(req.file);
+    });
     // GET ARTICLES
     server.get('/articles', function(req, res) {
         var Article = mongoose.model('Article');
@@ -10,7 +31,7 @@ module.exports = function(server) {
             res.send(docs);
         });
     });
-    //GET ARTICLE
+    // GET ARTICLE
     server.get('/article/:id', function(req, res) {
         const Article = mongoose.model('Article');
         Article.findByIdAndUpdate(req.params.id, {$inc: { views: 1 }}, function(err, doc) {

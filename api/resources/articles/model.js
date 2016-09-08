@@ -7,8 +7,8 @@ var Schema = mongoose.Schema({
     category: { type: String, required: true },
     author: { type: String, required: true },
     dateCreated: { type: Date, default: Date.now },
-    image: {},
-    views: { type: Number, default: 0 }
+    views: { type: Number, default: 0 },
+    coverImage 	: String
 
 });
 
