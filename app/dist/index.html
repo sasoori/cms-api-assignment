@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="MainCtrl">
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+    
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" data-remove="false" rel="stylesheet">
+    
+    
+    
+    
+    
+    
+<link rel="stylesheet" href="vendor.full.min.css"><link rel="stylesheet" href="app.full.min.css"></head>
+<body>
+
+  <!-- Livereload script for development only (stripped during dist build) -->
+  
+
+  <!-- JS from Bower Components -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- Add New Bower Component JS Above -->
+
+  <!-- Main App JS -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- Add New Component JS Above -->
+  <div id="loading-bar-container"></div>
+
+  <div class="cover-wrapper" ui-view="cover" ng-if="isCoverView"></div>
+
+  <div class="wrapper" ng-if="!isCoverView &amp;&amp; isLoggedIn">
+      <aside class="main-sidebar" ui-view="sidebar"></aside>
+      <div ui-view="main" class="content-wrapper" ng-class="{&apos;main-view&apos;:isLoggedIn}"></div>
+  </div>
+
+
+<script src="app.full.min.js"></script></body>
+</html>

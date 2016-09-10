@@ -2,7 +2,6 @@ angular.module('app', [
     'ui.bootstrap',
     'ui.router',
     'ngAnimate',
-    'angularify.semantic.sidebar',
     'angular-loading-bar',
     'ngTagsInput',
     'LocalForageModule',
