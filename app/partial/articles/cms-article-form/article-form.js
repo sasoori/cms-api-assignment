@@ -58,7 +58,7 @@ angular.module('app').directive('articleForm', function(articleService, $timeout
                     scope.isUploading = false;
                 }, function (resp) {
                     console.log('Error status: ' + resp.status);
-                })
+                });
             };
 
             eventListeners.push(scope.$on('saveArticle', function() {
