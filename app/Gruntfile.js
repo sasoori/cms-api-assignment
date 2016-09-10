@@ -101,7 +101,7 @@ module.exports = function (grunt) {
                     },
                     {
                         src: [
-                            'scripts/config.js'
+                            'config.js'
                         ],
                         dest: 'dist/config.js'
                     },
@@ -211,10 +211,10 @@ module.exports = function (grunt) {
             production: {
                 options: {
                     deps: false,
-                    dest: 'scripts/config.js'
+                    dest: 'config.js'
                 },
                 constants: {
-                    IP: 'codedesign.si'
+                    IP: 'http://api.codedesign.si'
                 }
             }
         },
@@ -254,7 +254,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('build', ['ngconstant:production', 'jshint', 'clean:before', 'less', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngAnnotate', 'uglify', 'copy', 'htmlmin', 'clean:after']);
+    grunt.registerTask('build', ['ngconstant:production', 'clean:before', 'less', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngAnnotate', 'uglify', 'copy', 'htmlmin', 'clean:after']);
     grunt.registerTask('serve', ['ngconstant:development', 'dom_munger:read', 'connect', 'watch']);
     grunt.registerTask('test', ['dom_munger:read', 'karma:all_tests']);
 
