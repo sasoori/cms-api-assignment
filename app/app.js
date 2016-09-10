@@ -16,7 +16,8 @@ angular.module('app').config(['cfpLoadingBarProvider', function(cfpLoadingBarPro
 angular.module('app').config(function ($httpProvider) {
     $httpProvider.interceptors.push('HttpInterceptor');
 });
-angular.module('app').constant('IP', 'http://localhost:3010');
+
+// angular.module('app').constant('IP', 'http://localhost:3010');
 angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 
     $stateProvider.state('login', {

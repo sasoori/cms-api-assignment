@@ -97,7 +97,14 @@ module.exports = function (grunt) {
                         src: [
                             'img/**'
                         ],
-                        dest: 'dist/'},
+                        dest: 'dist/'
+                    },
+                    {
+                        src: [
+                            'scripts/config.js'
+                        ],
+                        dest: 'dist/config.js'
+                    },
                     { // Semantic UI
                         src: [
                             'bower_components/semantic/dist/themes/default/assets/fonts/icons.woff'
@@ -185,6 +192,32 @@ module.exports = function (grunt) {
                 }
             }
         },
+        ngconstant: {
+            options: {
+                name: 'app',
+                wrap: '"use strict";\n\n{%= __ngModule %}',
+                space: '  '
+            },
+            development: {
+                options: {
+                    deps: false,
+                    dest: 'scripts/config.js'
+                },
+                constants: {
+                    IP: 'http://localhost:3010'
+                }
+
+            },
+            production: {
+                options: {
+                    deps: false,
+                    dest: 'scripts/config.js'
+                },
+                constants: {
+                    IP: 'codedesign.si'
+                }
+            }
+        },
         //Imagemin has issues on Windows.
         //To enable imagemin:
         // - "npm install grunt-contrib-imagemin"
@@ -221,8 +254,8 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('build', ['jshint', 'clean:before', 'less', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngAnnotate', 'uglify', 'copy', 'htmlmin', 'clean:after']);
-    grunt.registerTask('serve', ['dom_munger:read', 'connect', 'watch']);
+    grunt.registerTask('build', ['ngconstant:production', 'jshint', 'clean:before', 'less', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngAnnotate', 'uglify', 'copy', 'htmlmin', 'clean:after']);
+    grunt.registerTask('serve', ['ngconstant:development', 'dom_munger:read', 'connect', 'watch']);
     grunt.registerTask('test', ['dom_munger:read', 'karma:all_tests']);
 
 
