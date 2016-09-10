@@ -201,7 +201,7 @@ module.exports = function (grunt) {
             development: {
                 options: {
                     deps: false,
-                    dest: 'scripts/config.js'
+                    dest: 'config.js'
                 },
                 constants: {
                     IP: 'http://localhost:3010'

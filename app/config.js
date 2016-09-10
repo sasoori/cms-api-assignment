@@ -2,6 +2,6 @@
 
 angular.module('app')
 
-.constant('IP', 'http://api.codedesign.si')
+.constant('IP', 'http://localhost:3010')
 
 ;

@@ -19,7 +19,7 @@ const upload  = multer({ storage: storage });
 module.exports = function(server) {
 
     // UPLOAD IMAGES
-    server.post('/article/upload', authMiddleware, upload.single('file'), function(req,res) {
+    server.post('/article/upload', upload.single('file'), function(req,res) {
         console.log(req.file);
         res.send(req.file);
     });
