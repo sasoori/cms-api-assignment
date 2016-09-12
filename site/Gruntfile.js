@@ -23,28 +23,31 @@ module.exports = function(grunt) {
                     sourceMapRootpath: '/'
                 },
                 files: {
-                    "dist/main.min.css" : ["<%= path.less %>/main.less"]
+                    ".temp/main_less.css" : ["<%= path.less %>/main.less"]
                 }
             }
         },
         concat: {
-            jsDevelopment: {
-                src: ['<%= path.lib %>/*.js','<%= path.js %>/*.js'],
+            css: {
+                src: ['static/css/*.css', '.temp/main_less.css'],
+                dest: 'dist/main.min.css',
+            },
+            js: {
+                src: ['static/js/*.js'],
                 dest: 'dist/main.min.js',
             }
         },
         uglify: {
             js: {
                 files: {
-                    'dist/main.min.js': ['temp/js/main.js']
+                    'dist/main.min.js': ['<%path.lib/js/main.js']
                 }
             }
         },
         cssmin: {
-            target: {
-                files: {
-                    '<%= path.dist %>/main.min.css': ['.temp/main.css']
-                }
+            vendor: {
+                src: ['<%= dom_munger.data.vendorcss %>'],
+                dest: 'dist/vendor.min.css'
             }
         },
         clean: {
@@ -54,7 +57,7 @@ module.exports = function(grunt) {
         watch: {
             styles: {
                 files: ['<%= path.less %>/{,*/}*.less'],
-                tasks: ['less'],
+                tasks: ['less','concat:css'],
                 options: {
                     livereload: 35727
                 }
@@ -67,7 +70,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['<%= path.js %>/{,*/}*.js'],
-                tasks: ['concat:jsDevelopment'],
+                tasks: ['concat:js'],
                 options: {
                     livereload: 35727
                 }
@@ -78,17 +81,16 @@ module.exports = function(grunt) {
     grunt.registerTask('serve', [
         'clean',
         'less',
-        'concat:jsDevelopment',
+        'concat',
         'watch'
     ]);
 
     grunt.registerTask('build', [
         'clean',
         'less',
-        'concat:css',
-        'concat:js',
-        'uglify',
-        'cssmin',
+        'concat',
+       // 'uglify',
+        //'cssmin',
         'clean:temp'
     ]);
 
