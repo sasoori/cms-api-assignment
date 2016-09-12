@@ -70,4 +70,22 @@ module.exports = function(server) {
     server.post('/account/checkLogin', authMiddleware, function(req, res) {
         res.status(200).send(res.data);
     });
+
+    server.get('account/logout', function(req, res) {
+        const accountId = req.account._id;
+        const token = req.headers.authorization;
+
+        AccountModel.findByIdAndUpdate(accountId, {
+            $pull: {
+                tokens: {value: token}
+            }
+        }, {new:true})
+        .then((doc)=>{
+            res.sendStatus(200);
+        })
+        .catch((err)=>{
+            res.send(err, 400);
+        });
+
+    });
 };
