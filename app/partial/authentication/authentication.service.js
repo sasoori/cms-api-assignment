@@ -17,6 +17,22 @@ angular.module('app').factory('authService',function($http, $rootScope, $q, Sess
             });
             return deferred.promise;
         },
+        logout: function() {
+            var deferred = $q.defer();
+            $http({
+                method: 'GET',
+                url: IP + '/account/logout',
+                ignoreLoadingBar: false
+            }).then(function(response) {
+                $rootScope.isLoggedIn = false;
+                Session.model.user = {};
+                $localForage.clear();
+                deferred.resolve(response);
+            }, function(error) {
+                deferred.reject(error);
+            });
+            return deferred.promise;
+        },
         isLoggedIn: function() {
             return authService.getToken().then(function() {
                 var deferred = $q.defer();

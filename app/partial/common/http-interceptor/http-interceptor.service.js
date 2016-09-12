@@ -13,7 +13,6 @@ angular.module('app').factory('HttpInterceptor',function($q, $location, Session,
         },
 
         responseError: function (rejection) {
-
             if (rejection.status === 403 && rejection.data === 'Invalid session') {
                 $injector.get('$state').go('logout');
             }

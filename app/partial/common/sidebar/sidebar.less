@@ -1,68 +1,79 @@
 .sidebar-container {
     height: 100vh;
     float: left;
+
     .sidebar {
-      width: 200px;
-      padding:20px 0 0;
-      height: 100vh;
-      background-color: @cms-black;
+        width: 200px;
+        padding: 20px 0 0;
+        height: 100vh;
+        background-color: @cms-black;
 
-
-      color: @cms-lightgray;
+        color: @cms-lightgray;
 
     }
-  a:hover, a:visited, a:link, a:active
-  {
-    text-decoration: none;
-  }
-  .sidebar-header{
-    background-color: @cms-black;
-    text-align: center;
-    font-size: 90px;
-    color: white;
-    margin-bottom: 40px;
-    margin-top: 20px;
-
-    h2 {
-      margin: 0;
+    a:hover, a:visited, a:link, a:active {
+        text-decoration: none;
     }
-    a {
-      line-height: 1;
-      color: @cms-lightgray;
+    .sidebar-header {
+        background-color: @cms-black;
+        text-align: center;
+        font-size: 90px;
+        color: white;
+        margin-bottom: 40px;
+        margin-top: 20px;
+
+        h2 {
+            margin: 0;
+        }
+        a {
+            line-height: 1;
+            color: @cms-lightgray;
+        }
     }
-  }
+    .logout-btn {
+        position: absolute;
+        color: @cms-lightgray;
+        font-size: 12px;
+        left: 10px;
+        bottom: 5px;
 
-  .sidebar-button {
-    padding: 15px 10px;
-    text-indent: 20px;
-    transition: all 0.3s;
-    color: @cms-lightgray;
-    i{
-      margin-left: -20px;
-      margin-right: 25px;
-    }
-  }
-  .sidebar-button:hover {
-
-
-    font-weight: bold;
-    margin-left: 10px;
-  }
-
-  .sidebar-active {
-
-    .sidebar-button{
-      background-color: @cms-gray;
-      color: @cms-black;
-
-
-      font-weight: bold;
-      transition: all 0.3s;
-      &:hover {
-
-        margin-left: 0;
-      }
+        &:focus {
+            text-decoration: underline;
+            color: #1e70bf;
+        }
+        &:hover {
+            text-decoration: underline;
+            color: #1e70bf;
+        }
     }
 
-  }
+    .sidebar-button {
+        padding: 15px 10px;
+        text-indent: 20px;
+        transition: all 0.3s;
+        color: @cms-lightgray;
+        i {
+            margin-left: -20px;
+            margin-right: 25px;
+        }
+    }
+    .sidebar-button:hover {
+        font-weight: bold;
+        margin-left: 10px;
+    }
+
+    .sidebar-active {
+
+        .sidebar-button {
+            background-color: @cms-gray;
+            color: @cms-black;
+
+            font-weight: bold;
+            transition: all 0.3s;
+            &:hover {
+
+                margin-left: 0;
+            }
+        }
+    }
 }

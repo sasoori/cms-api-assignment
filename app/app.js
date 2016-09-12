@@ -23,7 +23,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('login', {
         url: '/login',
         views: {
-            cover: {
+            'cover@' : {
                 templateUrl: 'partial/authentication/login/login.html',
                 controller: 'LoginCtrl'
             }
@@ -31,8 +31,13 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
     });
     $stateProvider.state('logout', {
         url: '/logout',
-        templateUrl: 'partial/authentication/logout/logout.html',
-        controller: 'LogoutCtrl'
+        views: {
+            'cover@' : {
+                templateUrl: 'partial/authentication/logout/logout.html',
+                controller: 'LogoutCtrl'
+
+            }
+        }
     });
     $stateProvider.state('root', {
         abstract: true,

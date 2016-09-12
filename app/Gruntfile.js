@@ -149,7 +149,7 @@ module.exports = function (grunt) {
                     append: [
                         {selector: 'head', html: '<link rel="stylesheet" href="vendor.full.min.css">'},
                         {selector: 'head', html: '<link rel="stylesheet" href="app.full.min.css">'},
-                        {selector: 'body', html: '<script src="app.full.min.js"></script>'}
+                        {selector: 'head', html: '<script src="app.full.min.js"></script>'}
                     ]
                 },
                 src: 'index.html',
