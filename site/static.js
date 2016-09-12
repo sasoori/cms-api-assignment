@@ -6,8 +6,8 @@ const ejs = require('ejs');
 const util = require('./functions');
 const _ = require('lodash');
 const moment = require('moment');
-const API_IP = 'http://localhost:3010';
-const IP = 'http://localhost:3030';
+const API_IP = 'http://api.codedesign.si';
+const IP = 'http://codedesign.si';
 
 app.set('view engine','ejs');
 
