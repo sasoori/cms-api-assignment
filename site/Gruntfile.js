@@ -27,6 +27,21 @@ module.exports = function(grunt) {
                 }
             }
         },
+        copy: {
+            main: {
+                files: [
+                    { // Semantic UI
+                        src: [
+                            'static/libs/semantic/dist/themes/default/assets/fonts/icons.woff'
+                        ],
+                        dest: 'dist/themes/default/assets/fonts/',
+                        filter: 'isFile',
+                        flatten: true,
+                        expand: true
+                    }
+                ]
+            }
+        },
         concat: {
             css: {
                 src: ['static/css/*.css', '.temp/main_less.css'],
@@ -89,8 +104,9 @@ module.exports = function(grunt) {
         'clean',
         'less',
         'concat',
-       // 'uglify',
+        //'uglify',
         //'cssmin',
+        'copy',
         'clean:temp'
     ]);
 
