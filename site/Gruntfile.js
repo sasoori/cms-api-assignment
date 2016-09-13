@@ -34,7 +34,7 @@ module.exports = function(grunt) {
                         src: [
                             'static/libs/semantic/dist/themes/default/assets/fonts/icons.woff'
                         ],
-                        dest: 'dist/themes/default/assets/fonts/',
+                        dest: 'libs/semantic/dist/themes/default/assets/fonts/',
                         filter: 'isFile',
                         flatten: true,
                         expand: true

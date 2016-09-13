@@ -62,13 +62,24 @@ body {
   margin-top: -2px !important;
 }
 .card .body p,
-.card .body span,
-.card .body h1,
-.card .body h2,
-.card .body h3,
-.card .body h4 {
+.card .body span {
   font-family: 'Lato', sans-serif !important;
-  font-size: 110% !important;
+  font-size: 105% !important;
+}
+.card .body h1 {
+  font-family: 'Lato', sans-serif !important;
+  font-size: 150% !important;
+  color: black;
+}
+.card .body h2 {
+  font-family: 'Lato', sans-serif !important;
+  font-size: 140% !important;
+  color: black;
+}
+.card .body h3 {
+  font-family: 'Lato', sans-serif !important;
+  font-size: 120% !important;
+  color: black;
 }
 .card .extra.content > div {
   float: left;
